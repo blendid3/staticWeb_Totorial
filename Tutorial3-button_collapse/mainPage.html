@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="css/me.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <title>Button_collapse</title>
+</head>
+<script>
+    var button;
+    $(window).resize(function(it){
+        var width, list;
+        it.preventDefault();
+        width = $(this).width();
+        list = $('.ui.menu .content');
+        if (width > 768) {
+            return list.css('display', 'block');
+        } else {
+            return list.css('display', 'none');
+        }
+    });
+    button = $('.ui.button');
+    button.on('click', function(it){
+        var list, display;
+        it.preventDefault();
+        list = $('.ui.menu .content');
+        display = list.css('display');
+        if (display === 'none') {
+            return list.css('display', 'block');
+        } else {
+            return list.css('display', 'none');
+        }
+    });
+</script>
+<style>
+    .ui.collapsible.menu {
+        display: inline;
+    }
+
+    @media screen and (max-width: 768px) {
+        .ui.collapsible.menu {
+            display: block;
+        }
+    }
+
+    .ui.collapsible.menu .header .button {
+        margin: 0.5em;
+        display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+        .ui.collapsible.menu .header .button {
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .ui.collapsible.menu .content {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .ui.collapsible.menu .content .item, .ui.collapsible.menu .content .menu {
+            display: block;
+            float: none;
+            clear: both;
+        }
+    }
+
+    .description.view {
+        margin: 60px 1%;
+    }
+
+</style>
+<body>
+<div class="ui top fixed inverted collapsible menu">
+    <div class="container">
+        <div class="header"><a class="left floated item brand">Collapsible-Menu</a>
+            <div class="ui mini right floated button"><i class="list icon"></i></div><a class="right floated item">Other</a>
+        </div>
+        <div class="content"><a class="left floated item">One</a><a class="left floated item">Two</a>
+            <div class="right menu"><a class="item">Three</a></div>
+        </div>
+    </div>
+</div>
+<div class="description view">
+    <div class="ui blue segment">You can change window size and see menu changing above.</div>
+</div>
+</body>
+</html>
+
